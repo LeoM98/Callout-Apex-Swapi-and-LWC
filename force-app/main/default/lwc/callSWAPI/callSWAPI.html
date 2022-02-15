@@ -1,0 +1,65 @@
+<template>
+
+    <lightning-card  title="Búsqueda de Personajes">
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input type="text" onchange={onchangeId} value={id} label="Buscar Personaje" placeholder="Escriba el Id del personaje"></lightning-input>
+            </div>
+            <div style="margin-top: 1.6%;" class="slds-col slds-size_1-of-2">
+                <lightning-button variant="brand" label="Buscar" title="Buscar personaje" onclick={handleSearch} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <template if:true={showForm}>
+
+            <div class="slds-text-heading_large">Formulario SWAPI de Contacto</div>
+            <br>
+
+            <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess}>
+
+                <div class="slds-grid slds-wrap">
+                    
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangeNombre} read-only ={Isnombre} value={ContactSwapi.nombre} field-name='LastName'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangeAltura} read-only ={Isaltura} value={ContactSwapi.altura} field-name='Altura__c'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangeGenero} read-only ={Isgenero} value={ContactSwapi.genero} field-name='Genero__c'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangeCabello} read-only ={Ispelo} value={ContactSwapi.colorCabello} field-name='Color_de_cabello__c'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangeOjos} read-only ={Isojos} value={ContactSwapi.colorOjos} field-name='Color_de_ojos__c'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangeUrl} read-only ={Isurl} value={ContactSwapi.url} field-name='Url__c'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field onchange={handleChangePlaneta} read-only ={Isplaneta} value={ContactSwapi.planeta} field-name='Planeta__c'></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input-field read-only =true value={id} field-name='numero_personaje__c'></lightning-input-field>
+                    </div>
+
+                </div>
+                
+            </lightning-record-edit-form>
+
+            <div style="text-align:center;">
+                <lightning-button onclick={handleSave} variant="brand" title="Create a contact " class="slds-m-top_small" label="Crear Contacto">
+                </lightning-button>
+            </div>
+
+        </template>
+
+        <p slot="footer">SWAPI Interview - SALESFORCE EN ESPAÑOL</p>
+    </lightning-card>
+
+</template>
